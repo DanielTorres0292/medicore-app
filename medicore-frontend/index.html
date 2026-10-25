@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MediCore - Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body.login-bg {
+            background-color: var(--bg-primary);
+            /* Patrón de puntos sutil para dar textura al fondo plano */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 2px, transparent 2px);
+            background-size: 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-card {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            /* Sombra más amplia para un efecto "flotante" profesional */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .brand-logo h2 {
+            color: var(--accent);
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .login-footer {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .error-msg {
+            color: var(--badge-danger-text);
+            background-color: var(--badge-danger-bg);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+            border: 1px solid #f8b4b4;
+        }
+    </style>
+</head>
+<body class="login-bg">
+
+    <div class="login-card">
+        <!-- Logotipo SVG integrado -->
+        <div class="brand-logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.89 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.89 20.11 3 19 3ZM17 13H13V17H11V13H7V11H11V7H13V11H17V13Z" />
+            </svg>
+            <h2>MediCore</h2>
+        </div>
+        
+        <div id="error-box" class="error-msg"></div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" id="correo" class="form-control" placeholder="e.perez@medicore.mx" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px; padding: 12px;">Iniciar sesión</button>
+        </form>
+
+        <div class="login-footer">
+            La cuenta se bloquea tras 5 intentos fallidos.
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

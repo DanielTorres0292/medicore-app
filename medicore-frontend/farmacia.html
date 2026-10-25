@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MediCore - Módulo de Farmacia</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Menú Lateral -->
+        <aside class="sidebar">
+            <div class="brand" style="display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.89 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.89 20.11 3 19 3ZM17 13H13V17H11V13H7V11H11V7H13V11H17V13Z" />
+                </svg>
+                MediCore
+            </div>
+            <nav>
+                <button id="nav-inventario" class="active" onclick="switchTab('inventario')">Inventario</button>
+                <button id="nav-entrada" onclick="switchTab('entrada')">Nuevo Lote</button>
+            </nav>
+        </aside>
+
+        <!-- Área Principal -->
+        <main class="main-content">
+            <div class="header-user">
+                <span id="nombre-usuario-header">Luis Ortega · Farmacia</span>
+            </div>
+
+            <!-- TAB 1: CONSULTA DE INVENTARIO (HU9) -->
+            <section id="tab-inventario">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h2>Control de inventario</h2>
+                    <button class="btn btn-primary" onclick="cargarInventario()">Actualizar lista</button>
+                </div>
+
+                <div class="card">
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>Medicamento</th>
+                                <th>Existencia</th>
+                                <th>Stock Mín.</th>
+                                <th>Lote</th>
+                                <th>Caducidad</th>
+                                <th>Precio ($)</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-inventario-body">
+                            <!-- Datos cargados dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- TAB 2: REGISTRAR ENTRADA DE MEDICAMENTO (HU15) -->
+            <section id="tab-entrada" style="display: none;">
+                <h2>Registrar entrada de medicamentos</h2>
+                <br>
+                <div class="card" style="max-width: 600px;">
+                    <form id="form-medicamento" onsubmit="registrarMedicamento(event)">
+                        <div class="form-group">
+                            <label>Nombre del medicamento</label>
+                            <input type="text" id="nombre" class="form-control" placeholder="Ej. Ibuprofeno 400 mg" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group">
+                                <label>Existencia inicial</label>
+                                <input type="number" id="existencia" class="form-control" placeholder="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Stock mínimo</label>
+                                <input type="number" id="stockMinimo" class="form-control" placeholder="20" required>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group">
+                                <label>Número de lote</label>
+                                <input type="text" id="lote" class="form-control" placeholder="L-2402" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de caducidad</label>
+                                <input type="date" id="caducidad" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Precio unitario ($)</label>
+                            <input type="number" step="0.01" id="precio" class="form-control" placeholder="110.00" required>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+                            <button type="button" class="btn btn-secondary" onclick="switchTab('inventario')">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar en inventario</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/farmacia.js"></script>
+</body>
+</html>

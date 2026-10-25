@@ -1,0 +1,191 @@
+:root {
+    --bg-primary: #0f3832;       /* Verde oscuro del Sidebar y Login */
+    --bg-main: #f3f5f5;          /* Fondo claro de la aplicación */
+    --bg-card: #ffffff;          /* Tarjetas y paneles blancos */
+    --accent: #198777;           /* Verde de botones y selecciones */
+    --accent-hover: #136a5d;
+    --text-primary: #1a1a1a;
+    --text-muted: #666666;
+    --border-color: #e2e8f0;
+    
+    /* Estados de Inventario y Badges */
+    --badge-danger-bg: #fde8e8;
+    --badge-danger-text: #9b1c1c;
+    --badge-warning-bg: #fef08a;
+    --badge-warning-text: #713f12;
+    --badge-success-bg: #def7ec;
+    --badge-success-text: #03543f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Contenedor Principal con Layout en 2 columnas */
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sidebar estilo Figma */
+.sidebar {
+    width: 240px;
+    background-color: var(--bg-primary);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Esto empuja el botón de cerrar sesión hacia abajo */
+    padding: 24px 16px;
+}
+
+.sidebar .brand {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 32px;
+    padding-left: 12px;
+}
+
+.sidebar nav button {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar nav button.active,
+.sidebar nav button:hover {
+    background-color: var(--accent);
+    color: #ffffff;
+}
+
+/* Área de Contenido Principal */
+.main-content {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.header-user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.user-pill {
+    background-color: #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Componentes UI reutilizables */
+.card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Badges e Insignias */
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.badge-bajo { background-color: var(--badge-danger-bg); color: var(--badge-danger-text); }
+.badge-caducar { background-color: var(--badge-warning-bg); color: var(--badge-warning-text); }
+.badge-normal { background-color: var(--badge-success-bg); color: var(--badge-success-text); }
+
+/* Tablas */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-custom th, .table-custom td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+}
+
+.table-custom th {
+    color: var(--text-muted);
+    font-weight: 600;
+}
